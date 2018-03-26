@@ -9,12 +9,12 @@ public:
 
 	void SignedAddition(short int FirstNum, short int SecondNum, short int &OutAnswer);
 	void SignedSubtraction(short int FirstNum, short int SecondNum, short int &OutAnswer);
-	void SignedMultiplication();
-	void SignedDivision();
+	void SignedMultiplication(short int FirstNum, short int SecondNum, short int &OutAnswer);
+	void SignedDivision(short int FirstNum, short int SecondNum, short int &OutAnswer); //Needs Fixin
 
 	void UnsignedAddition(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer);
-	short int UnsignedSubtraction();
-	short int UnsignedMultiplication();
-	short int UnsignedDivision();
+	void UnsignedSubtraction(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer);
+	void UnsignedMultiplication(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer);
+	void UnsignedDivision(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer); //needs fixin
 
 };
