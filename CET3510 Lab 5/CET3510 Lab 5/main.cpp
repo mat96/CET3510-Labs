@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
-#include"Operations.h"
+#include "Operations.h"
 
 void Introduction();
 void Calculator();
@@ -90,7 +90,7 @@ void Calculator()
 	}
 
 
-
+	//TODO write a functions that displays carry flags and overflow flags. 
 	
 	return;
 }
@@ -313,6 +313,9 @@ bool AskToCalculateAgain()
 
 }
 
+
+
+	
 
 
 	
