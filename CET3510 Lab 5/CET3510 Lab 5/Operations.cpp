@@ -263,7 +263,6 @@ void Operations::UnsignedDivision(unsigned short FirstNum, unsigned short Second
 	// use carry flag for unsigned operation
 	int UnusedInt = 9;
 
-	//TODO fix this division error
 	unsigned short Answer; 
 	_asm
 	{
