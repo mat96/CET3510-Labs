@@ -1,8 +1,12 @@
 #include "Operations.h"
+#include <iostream>
 
 	///All Operations here are written in assembly for the purpse of the lab
 void Operations::SignedAddition(short int FirstNum, short int SecondNum, short int &OutAnswer)
 {
+	int UnusedInt = 9; // 9 is not used or called
+
+
 	short int Answer;
 	_asm
 	{
@@ -10,8 +14,25 @@ void Operations::SignedAddition(short int FirstNum, short int SecondNum, short i
 		MOV BX, SecondNum;
 		ADD AX, BX;
 		MOV Answer, AX;
+		JO True;
+		JNO False;
 	}
 
+	if (UnusedInt = -1)
+	{
+
+	True:
+		std::cout << " Overflow Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+
+	False:
+		std::cout << "Overflow Flag = 0\n";
+	}
+
+	 
 	OutAnswer = Answer;
 
 	return;
@@ -20,13 +41,31 @@ void Operations::SignedAddition(short int FirstNum, short int SecondNum, short i
 
 void Operations::SignedSubtraction(short int FirstNum, short int SecondNum, short int &OutAnswer)
 {
+	int UnusedInt = 9; // 9 is not used or called 
 	short int Answer;
+
 	_asm
 	{
 		MOV AX, FirstNum;
 		MOV BX, SecondNum;
 		SUB AX, BX;
 		MOV Answer, AX;
+		JO True;
+		JO False;
+	}
+
+	if (UnusedInt = -1)
+	{
+
+	True:
+		std::cout << " Overflow Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+
+	False:
+		std::cout << "Overflow Flag = 0\n";
 	}
 
 	OutAnswer = Answer;
@@ -36,15 +75,34 @@ void Operations::SignedSubtraction(short int FirstNum, short int SecondNum, shor
 
 void Operations::SignedMultiplication(short int FirstNum, short int SecondNum, short int &OutAnswer)
 {
+
 	short int Answer;
+	int UnusedInt = 9; // 9 is not used 
+
 	_asm
 	{
 		MOV AX, FirstNum;
 		MOV BX, SecondNum;
 		IMUL BX;
 		MOV Answer, AX;
+		JO True;
+		JNO False;
+	}
+
+	if (UnusedInt = -1)
+	{
+
+	True:
+		std::cout << " Overflow Flag = 1\n";
 
 	}
+	else if (UnusedInt = -2)
+	{
+
+	False:
+		std::cout << "Overflow Flag = 0\n";
+	}
+
 
 	OutAnswer = Answer;
 
@@ -54,8 +112,8 @@ void Operations::SignedMultiplication(short int FirstNum, short int SecondNum, s
 void Operations::SignedDivision(short int FirstNum, short int SecondNum, short int &OutAnswer)
 {
 
-	//TODO Fix issues regarding this division
 	short int Answer;
+	int UnusedInt = 9; // 9 is not used 
 
 	
 
@@ -65,9 +123,28 @@ void Operations::SignedDivision(short int FirstNum, short int SecondNum, short i
 		MOV AX, FirstNum;
 		MOV BX, SecondNum;
 		IDIV BX;
-		MOV Answer, AX;  //
+		MOV Answer, AX;  
+		JO True;
+		JNO False;
+		
 
 	}
+
+	if (UnusedInt = -1)
+	{
+
+	True:
+		std::cout << " Overflow Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+
+	False:
+		std::cout << "Overflow Flag = 0\n";
+	}
+
+
 	OutAnswer = Answer;
 	return;
 
@@ -78,6 +155,10 @@ void Operations::SignedDivision(short int FirstNum, short int SecondNum, short i
 ///Here starts the unsigned operations, again written in x86 assembly				
 void Operations::UnsignedAddition(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer)
 {
+	int UnusedInt = 9; // 9 is not used 
+
+
+	// use carry flag for unsigned operations
 	unsigned short int Answer;
 	_asm
 	{
@@ -85,7 +166,22 @@ void Operations::UnsignedAddition(unsigned short FirstNum, unsigned short Second
 		MOV BX, SecondNum;
 		ADD AX, BX;
 		MOV Answer, AX;
+		JC True;
+		JNC False;
+	}
 
+	if (UnusedInt = -1)
+	{
+
+	True:
+		std::cout << " Carry Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+
+	False:
+		std::cout << "Carry Flag = 0\n";
 	}
 
 	OutAnswer = Answer;
@@ -96,6 +192,8 @@ void Operations::UnsignedAddition(unsigned short FirstNum, unsigned short Second
 
 void Operations::UnsignedSubtraction(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer)
 {
+	// use carry flag for unsigned operations
+	int UnusedInt = 9;
 	unsigned short Answer;
 	_asm
 	{
@@ -103,7 +201,22 @@ void Operations::UnsignedSubtraction(unsigned short FirstNum, unsigned short Sec
 		MOV DX, SecondNum;
 		SUB CX, DX;
 		MOV Answer, CX;
+		JC True;
+		JNC False;
 	}
+
+	if (UnusedInt = -1)
+	{
+        True:
+		std::cout << " Carry Flag = 1\n" ;
+
+	}
+	else if (UnusedInt = -2)
+	{
+		False:
+		std::cout << "Carry Flag = 0\n";
+	}
+
 	OutAnswer = Answer;
 
 	return;
@@ -111,6 +224,9 @@ void Operations::UnsignedSubtraction(unsigned short FirstNum, unsigned short Sec
 
 void Operations::UnsignedMultiplication(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer)
 {
+	// use carry flag for unsigned operation
+	int UnusedInt = 9;
+
 	unsigned short Answer;
 
 	_asm
@@ -119,8 +235,23 @@ void Operations::UnsignedMultiplication(unsigned short FirstNum, unsigned short 
 		MOV BX, SecondNum;
 		MUL BX;
 		MOV Answer, AX;
+		JC True;
+		JNC False;
 
 	}
+
+	if (UnusedInt = -1)
+	{
+	True:
+		std::cout << " Carry Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+	False:
+		std::cout << "Carry Flag = 0\n";
+	}
+
 
 	OutAnswer = Answer;
 
@@ -129,6 +260,9 @@ void Operations::UnsignedMultiplication(unsigned short FirstNum, unsigned short 
 
 void Operations::UnsignedDivision(unsigned short FirstNum, unsigned short SecondNum, unsigned short &OutAnswer)
 {
+	// use carry flag for unsigned operation
+	int UnusedInt = 9;
+
 	//TODO fix this division error
 	unsigned short Answer; 
 	_asm
@@ -138,9 +272,24 @@ void Operations::UnsignedDivision(unsigned short FirstNum, unsigned short Second
 		MOV BX, SecondNum;
 		DIV BX;
 		MOV Answer, AX;  
+		JC True;
+		JNC False;
 
+	}
+
+	if (UnusedInt = -1)
+	{
+	True:
+		std::cout << " Carry Flag = 1\n";
+
+	}
+	else if (UnusedInt = -2)
+	{
+	False:
+		std::cout << "Carry Flag = 0\n";
 	}
 
 	OutAnswer = Answer;
 	return;
 }
+
